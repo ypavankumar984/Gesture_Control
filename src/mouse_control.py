@@ -81,7 +81,7 @@ while True:
             zoomDistance = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
             currentTime = time.time()
             if currentTime - lastZoomTime > zoomCooldown:
-                if zoomDistance < 40 and prevDistance - zoomDistance > 10:
+                if zoomDistance < 80 and prevDistance - zoomDistance > 10:
                     keyboard.press_and_release('ctrl+-')  # Zoom Out
                     lastZoomTime = currentTime
                 elif zoomDistance > prevDistance + 15:
@@ -98,8 +98,10 @@ while True:
     # Display FPS
     cv2.putText(img, f'FPS: {int(fps)}', (20, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
     
-    # Display the image
+    cv2.namedWindow("Virtual Mouse", cv2.WINDOW_NORMAL)  # Make window resizable
+    cv2.resizeWindow("Virtual Mouse", 950, 1200)  # Set width and height
     cv2.imshow("Virtual Mouse", img)
+
     
     # Exit on pressing 'q'
     if cv2.waitKey(1) & 0xFF == ord('q'):
