@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Virtual Mouse Control",
+    "version": "1.0",
+    "description": "Control mouse using hand gestures",
+    "permissions": ["activeTab", "scripting", "nativeMessaging"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "host_permissions": [
+      "http://localhost:5000/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    }
+  }
+  
